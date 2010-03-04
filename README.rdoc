@@ -2,7 +2,7 @@
 
 Hey, I'm Kenny Dialoggins, here's why I'm here:
 
-<strong>Freakin' Dialogs</strong>:  You want a sweet dialog in your Rails app, but you don't want to mess with Javascript.
+<b>Freakin' Dialogs</b>:  You want a sweet dialog in your Rails app, but you don't want to mess with Javascript.
 
 == Usage
 
