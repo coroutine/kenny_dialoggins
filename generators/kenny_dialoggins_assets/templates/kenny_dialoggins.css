@@ -1,0 +1,8 @@
+.dialog {                   
+    position:               absolute;
+    padding:                1em;
+    -moz-box-shadow:        4px 4px 16px rgba(0,0,0,0.5);
+    -webkit-box-shadow:     4px 4px 16px rgba(0,0,0,0.5);
+    border:                 1px solid #BBB;
+    background:             #FFF;
+}

@@ -1,0 +1,52 @@
+== Kenny Dialoggins
+
+Hey, I'm Kenny Dialoggins, here's why I'm here:
+
+<strong>Freakin' Dialogs</strong>:  You want a sweet dialog in your Rails app, but you don't want to mess with Javascript.
+
+== Usage
+
+Before you go installing Kenny Dialoggins, you need to know a few things about me:
+
+* I don't work alone.  I need my kick-ass backup singers, Prototype and Scriptaculous.
+* Because Microsoft sang a little flat on IE8, I got disoriented and couldn't figure out where I needed to stand on stage. (absolute positioning is f'ed.)
+so if you want me to stand in the right place, you'll want to use Safari, Chrome, Firefox, Opera or IE 6/7.
+
+=== Installation
+
+    script/plugin install git@github.com:coroutine/kenny_dialoggins.git
+    
+    script/generate kenny_dialoggins_assets # This'll put a .js file in public/javascripts and a .css file in public/stylesheets
+
+== Examples
+
+If you want my dialog in your app, here's what you need to do:
+
+    # Create the dialog
+    <%= render_dialog :danger_zone_dialog, :partial => "danger_zone" %>
+    
+    # Invoke the dialog
+    <%= link_to_function "Highway to the...", show_dialog(:danger_zone_dialog) %>
+    
+That's pretty much it.  You like that.  I can tell.  Don't Fight it.
+
+So, here's the skinny.  <tt>render_dialog</tt> always needs a unique id for its first argument.  After that, it will
+take the same options as <tt>ActionController::Base#render</tt>.  It'll also take a few more; those being:
+
+* <tt>:before_show</tt> - a Javascript function that will be invoked before the dialog is shown
+* <tt>:after_show</tt> - a Javascript function that will be invoked after the dialog has become visible
+* <tt>:before_hide</tt> - a Javascript function that will be invoked before the dialog is hidden
+* <tt>:after_hide</tt> - a Javascript function that will be invoked after the dialog has been hidden
+
+So, here's an example using before show:
+
+    # Create the dialog, with a callback
+    <%= render_dialog :footloose_dialog, :partial => "footloose", :before_show => "function() { alert('Everybody get footloose!') }" %>
+    
+    
+
+Yours Truly,
+Kenny Dialoggins
+
+
+Copyright (c) 2010 Coroutine LLC, released under the MIT license
