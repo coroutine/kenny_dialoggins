@@ -9,8 +9,7 @@ Hey, I'm Kenny Dialoggins, here's why I'm here:
 Before you go installing Kenny Dialoggins, you need to know a few things about me:
 
 * I don't work alone.  I need my kick-ass backup singers, Prototype and Scriptaculous.
-* Because Microsoft sang a little flat on IE8, I got disoriented and couldn't figure out where I needed to stand on stage. (absolute positioning is f'ed.)
-so if you want me to stand in the right place, you'll want to use Safari, Chrome, Firefox, Opera or IE 6/7.
+* Because Microsoft sang a little flat on IE8, I got disoriented and couldn't figure out where I needed to stand on stage (absolute positioning is f'ed.) So, if you want me to stand in the right place, you'll want to use Safari, Chrome, Firefox, Opera or IE 6/7.
 
 === Installation
 
