@@ -24,8 +24,10 @@ Gem::Specification.new do |s|
      "generators/kenny_dialoggins_assets/templates/kenny_dialoggins.css",
      "generators/kenny_dialoggins_assets/templates/kenny_dialoggins.js",
      "init.rb",
+     "kenny_dialoggins.gemspec",
      "lib/kenny_dialoggins.rb",
      "lib/kenny_dialoggins/helpers.rb",
+     "rails/init.rb",
      "test/kenny_dialoggins_test.rb",
      "test/test_helper.rb"
   ]
@@ -44,9 +46,12 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+      s.add_runtime_dependency(%q<actionpack>, [">= 0"])
     else
+      s.add_dependency(%q<actionpack>, [">= 0"])
     end
   else
+    s.add_dependency(%q<actionpack>, [">= 0"])
   end
 end
 

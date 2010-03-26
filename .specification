@@ -1,0 +1,89 @@
+--- !ruby/object:Gem::Specification 
+name: kenny_dialoggins
+version: !ruby/object:Gem::Version 
+  prerelease: false
+  segments: 
+  - 0
+  - 1
+  - 0
+  version: 0.1.0
+platform: ruby
+authors: 
+- Coroutine
+- Tim Lowrimore
+autorequire: 
+bindir: bin
+cert_chain: []
+
+date: 2010-03-26 00:00:00 -05:00
+default_executable: 
+dependencies: 
+- !ruby/object:Gem::Dependency 
+  name: actionpack
+  prerelease: false
+  requirement: &id001 !ruby/object:Gem::Requirement 
+    requirements: 
+    - - ">="
+      - !ruby/object:Gem::Version 
+        segments: 
+        - 0
+        version: "0"
+  type: :runtime
+  version_requirements: *id001
+description: Kenny Dialoggins allows you to include scriptaculous dialogs in Rails applications using the same syntax employed for rendering partials.
+email: "@coroutine.com"
+executables: []
+
+extensions: []
+
+extra_rdoc_files: 
+- README.rdoc
+files: 
+- MIT-LICENSE
+- README.rdoc
+- Rakefile
+- VERSION
+- generators/kenny_dialoggins_assets/kenny_dialoggins_assets_generator.rb
+- generators/kenny_dialoggins_assets/templates/kenny_dialoggins.css
+- generators/kenny_dialoggins_assets/templates/kenny_dialoggins.js
+- init.rb
+- kenny_dialoggins.gemspec
+- lib/kenny_dialoggins.rb
+- lib/kenny_dialoggins/helpers.rb
+- rails/init.rb
+- test/kenny_dialoggins_test.rb
+- test/test_helper.rb
+has_rdoc: true
+homepage: http://github.com/coroutine/kenny_dialoggins
+licenses: []
+
+post_install_message: 
+rdoc_options: 
+- --charset=UTF-8
+require_paths: 
+- lib
+required_ruby_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      segments: 
+      - 0
+      version: "0"
+required_rubygems_version: !ruby/object:Gem::Requirement 
+  requirements: 
+  - - ">="
+    - !ruby/object:Gem::Version 
+      segments: 
+      - 0
+      version: "0"
+requirements: []
+
+rubyforge_project: 
+rubygems_version: 1.3.6
+signing_key: 
+specification_version: 3
+summary: Dead simple, beautiful dialogs for Rails.
+test_files: 
+- test/kenny_dialoggins_test.rb
+- test/test_helper.rb
+

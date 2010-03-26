@@ -35,6 +35,7 @@ begin
     gemspec.name              = "kenny_dialoggins"
     gemspec.summary           = "Dead simple, beautiful dialogs for Rails."
     
+    gemspec.add_dependency("actionpack")
     gemspec.files.include("lib/**/*.rb")
   end
   Jeweler::GemcutterTasks.new
