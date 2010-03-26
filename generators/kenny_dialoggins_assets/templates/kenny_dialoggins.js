@@ -19,7 +19,6 @@ KennyDialoggins.Dialog = function(content, options) {
     this._makeDialog();
     this.setContent(content);
     document.body.appendChild(this._element);
-    
 }
 
 KennyDialoggins.Dialog.instances = {};
@@ -57,7 +56,8 @@ KennyDialoggins.Dialog.is_showing = function(id) {
 Object.extend(KennyDialoggins.Dialog.prototype, {
     _makeDialog: function() {
         if(!this._element) {
-            this._element = new Element("DIV", { className: "dialog" });
+            this._element = new Element("DIV");
+            this._element.className = "dialog";
             this._element.hide();
         }
     },
