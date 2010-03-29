@@ -33,9 +33,9 @@ What's that, you want more details?  You got it, buddy.
 take the same options as <tt>ActionController::Base#render</tt>.  It'll also take a few more, namely:
 
 * <tt>:before_show</tt> - a Javascript function that will be invoked before the dialog is shown
-* <tt>:after_show </tt> - a Javascript function that will be invoked after the dialog has become visible
+* <tt>:after_show&nbsp;</tt> - a Javascript function that will be invoked after the dialog has become visible
 * <tt>:before_hide</tt> - a Javascript function that will be invoked before the dialog is hidden
-* <tt>:after_hide </tt> - a Javascript function that will be invoked after the dialog has been hidden
+* <tt>:after_hide&nbsp;</tt> - a Javascript function that will be invoked after the dialog has been hidden
 
 Here's an example using the <tt>before_show</tt> option:
 
@@ -58,9 +58,9 @@ Kenny Dialoggins
 
 == Helpful Links
 
-* <b>Repository</b>:: http://github.com/coroutine/kenny_dialoggins
-* <b>Gem</b>:: http://rubygems.org/gems/kenny_dialoggins
-* <b>Authors</b>:: http://coroutine.com
+* <b>Repository:</b> http://github.com/coroutine/kenny_dialoggins
+* <b>Gem:</b> http://rubygems.org/gems/kenny_dialoggins
+* <b>Authors:</b> http://coroutine.com
 
 
 
@@ -71,8 +71,8 @@ To take you to the danger zone, I need my kick ass backup singers Prototype and 
 But since I was designed as a Rails extension, chances are you already have my boys 
 in the mix.
 
-* <b>Prototype</b>:: http://prototypejs.org
-* <b>Scriptaculous</b>:: http://script.aculo.us
+* <b>Prototype:</b> http://prototypejs.org
+* <b>Scriptaculous:</b> http://script.aculo.us
 
 
 
