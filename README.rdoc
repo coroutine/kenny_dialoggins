@@ -94,4 +94,4 @@ Then, generate the stylesheet and javascript files I need.
 
 == License
 
-Copyright (c) 2010 Coroutine LLC. http://coroutine.com
+Copyright (c) 2010 {Coroutine LLC}[http://coroutine.com].

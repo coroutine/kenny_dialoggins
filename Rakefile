@@ -28,15 +28,15 @@ end
 
 begin
   Jeweler::Tasks.new do |gemspec|
-    gemspec.authors           = ["Coroutine", "Tim Lowrimore"]
+    gemspec.authors           = ["Coroutine", "Tim Lowrimore", "John Dugan"]
     gemspec.description       = "Kenny Dialoggins allows you to include scriptaculous dialogs in Rails applications using the same syntax employed for rendering partials."
-    gemspec.email             = "@coroutine.com"
+    gemspec.email             = "gems@coroutine.com"
     gemspec.homepage          = "http://github.com/coroutine/kenny_dialoggins"
     gemspec.name              = "kenny_dialoggins"
     gemspec.summary           = "Dead simple, beautiful dialogs for Rails."
     
-    gemspec.add_dependency("actionpack")
     gemspec.files.include("lib/**/*.rb")
+    gemspec.files.include("test/**/*.rb")
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
