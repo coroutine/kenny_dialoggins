@@ -12,7 +12,7 @@ the bone, I only care about one thing.
 <b>Freakin' Dialogs</b>.  
 
 If you're a Rails developer who wants to use dialogs but doesn't want to mess with Javascript, you 
-might want to prep your best friend for some bad news.  We're about to become <b>tight</b>.
+might want to prep your best friend for some bad news.  We're about to become tight.
 
 Let me lay it out for you.  If you want my dialog in one of your views, here's what you do:
 
@@ -27,7 +27,7 @@ That's pretty much it.  Did you notice how <tt>render_dialog</tt> takes the same
 
 You like that.  I can tell.  Don't fight it.
 
-Wait, you want more details?  You got it, buddy.
+What's that, you want more details?  You got it, buddy.
 
 <tt>render_dialog</tt> always needs a unique id for its first argument.  After that, it will
 take the same options as <tt>ActionController::Base#render</tt>.  It'll also take a few more, namely:
