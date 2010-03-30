@@ -90,7 +90,21 @@ Either way, then generate the stylesheet and javascript files I need.
 
 	$ script/generate kenny_dialoggins_assets
 	
-	
+
+
+== IE6 Support
+
+I'm not what you'd call a huge fan on IE6, so I don't provide a blocking 
+iframe for my dialogs by default.  But I can.  You just need to ask nicely.
+
+At the top of the generated javascript file, just change the obviously-named property 
+hanging	right off of the Kenny D namespace.  Like this.
+
+	KennyDialoggins.SUPPORT_IE6_BULLSHIT = true;
+
+That's it. I do the rest.
+
+
 
 == License
 
