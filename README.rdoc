@@ -108,4 +108,4 @@ That's it. I do the rest.
 
 == License
 
-Copyright (c) 2010 {Coroutine LLC}[http://coroutine.com].
+Copyright (c) 2010 {Coroutine LLC}[http://coroutine.com], released under the MIT license.
