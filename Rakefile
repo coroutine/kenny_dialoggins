@@ -1,28 +1,28 @@
 require 'rake'
 require 'rake/testtask'
-require 'rake/rdoctask'
-require 'jeweler'
+require "rake/rdoctask"
+require "jeweler"
 
 
-desc 'Default: run tests.'
+desc "Default: run tests."
 task :default => [:test]
 
 
-desc 'Test the plugin.'
+desc "Test the plugin."
 Rake::TestTask.new(:test) do |t|
-  t.libs << 'lib'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
+  t.libs    << "lib"
+  t.pattern  = "test/**/*_test.rb"
+  t.verbose  = true
 end
 
 
-desc 'Generate documentation for the plugin.'
+desc "Generate documentation for the plugin."
 Rake::RDocTask.new(:rdoc) do |rdoc|
-  rdoc.rdoc_dir = 'rdoc'
-  rdoc.title    = 'kenny_dialoggins'
-  rdoc.options << '--line-numbers --inline-source'
-  rdoc.rdoc_files.include('README')
-  rdoc.rdoc_files.include('lib/**/*.rb')
+  rdoc.rdoc_dir = "rdoc"
+  rdoc.title    = "kenny_dialoggins"
+  rdoc.options << "--line-numbers --inline-source"
+  rdoc.rdoc_files.include("README")
+  rdoc.rdoc_files.include("lib/**/*.rb")
 end
 
 
@@ -35,7 +35,10 @@ begin
     gemspec.name              = "kenny_dialoggins"
     gemspec.summary           = "Dead simple, beautiful dialogs for Rails."
     
-    gemspec.files.include("lib/**/*.rb")
+    gemspec.add_dependency("actionpack", ">=2.3.4")
+    gemspec.add_development_dependency("activesupport", ">=2.3.4")
+    
+    gemspec.files.include("generators/**/*", "lib/**/*")
     gemspec.files.include("test/**/*.rb")
   end
   Jeweler::GemcutterTasks.new
