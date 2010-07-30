@@ -1,0 +1,20 @@
+/**  
+ * These styles are provided as examples.  Feel free to change them however you like.
+ */
+.kenny_dialoggins_dialog {                   
+    position:               absolute;
+    padding:                1em;
+    border:                 1px solid #BBB;
+    background:             #FFF;
+    z-index:                2;
+    -moz-box-shadow:        4px 4px 16px rgba(0,0,0,0.5);
+    -webkit-box-shadow:     4px 4px 16px rgba(0,0,0,0.5);
+    filter:                 alpha(opacity=100);     /* really only needed if ie6 suport is enabled */
+}
+
+.kenny_dialoggins_dialog_frame {
+    position:               absolute;
+    border:                 none;
+    z-index:                1;
+    filter:                 alpha(opacity=0);       /* really only needed if ie6 suport is enabled */
+}

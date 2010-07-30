@@ -5,7 +5,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{kenny_dialoggins}
-  s.version = "0.1.2"
+  s.version = "0.2.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Coroutine", "Tim Lowrimore", "John Dugan"]
@@ -16,7 +16,8 @@ Gem::Specification.new do |s|
     "README.rdoc"
   ]
   s.files = [
-    ".specification",
+    ".gitignore",
+     ".specification",
      "MIT-LICENSE",
      "README.rdoc",
      "Rakefile",
@@ -26,6 +27,9 @@ Gem::Specification.new do |s|
      "generators/kenny_dialoggins/templates/kenny_dialoggins.js",
      "init.rb",
      "kenny_dialoggins.gemspec",
+     "lib/generators/kenny_dialoggins/kenny_dialoggins_generator.rb",
+     "lib/generators/kenny_dialoggins/templates/kenny_dialoggins.css",
+     "lib/generators/kenny_dialoggins/templates/kenny_dialoggins.js",
      "lib/kenny_dialoggins.rb",
      "lib/kenny_dialoggins/helpers.rb",
      "rails/init.rb",

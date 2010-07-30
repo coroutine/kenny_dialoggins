@@ -1,13 +1,13 @@
 --- !ruby/object:Gem::Specification 
 name: kenny_dialoggins
 version: !ruby/object:Gem::Version 
-  hash: 31
+  hash: 23
   prerelease: false
   segments: 
   - 0
-  - 1
   - 2
-  version: 0.1.2
+  - 0
+  version: 0.2.0
 platform: ruby
 authors: 
 - Coroutine
@@ -61,6 +61,7 @@ extensions: []
 extra_rdoc_files: 
 - README.rdoc
 files: 
+- .gitignore
 - .specification
 - MIT-LICENSE
 - README.rdoc
@@ -71,6 +72,9 @@ files:
 - generators/kenny_dialoggins/templates/kenny_dialoggins.js
 - init.rb
 - kenny_dialoggins.gemspec
+- lib/generators/kenny_dialoggins/kenny_dialoggins_generator.rb
+- lib/generators/kenny_dialoggins/templates/kenny_dialoggins.css
+- lib/generators/kenny_dialoggins/templates/kenny_dialoggins.js
 - lib/kenny_dialoggins.rb
 - lib/kenny_dialoggins/helpers.rb
 - rails/init.rb
