@@ -1,13 +1,13 @@
 --- !ruby/object:Gem::Specification 
 name: kenny_dialoggins
 version: !ruby/object:Gem::Version 
-  hash: 19
+  hash: 17
   prerelease: false
   segments: 
   - 0
   - 2
-  - 2
-  version: 0.2.2
+  - 3
+  version: 0.2.3
 platform: ruby
 authors: 
 - Coroutine

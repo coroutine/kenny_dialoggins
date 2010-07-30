@@ -1,7 +1,7 @@
 require "rails/generators"
 
 
-class KennyDialogginsGenerator < Rails::Generator::Base
+class KennyDialogginsGenerator < Rails::Generators::Base
 
   # This call establishes the path to the templates directory.
   #

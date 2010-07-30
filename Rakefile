@@ -38,8 +38,8 @@ begin
     gemspec.add_dependency("actionpack", ">=2.3.4")
     gemspec.add_development_dependency("activesupport", ">=2.3.4")
     
-    gemspec.files.include("lib/**/*.rb")
-    gemspec.files.include("test/**/*.rb")
+    gemspec.files.include("generators/**/*", "lib/**/*")
+    gemspec.files.include("test/**/*")
   end
   Jeweler::GemcutterTasks.new
 rescue LoadError
