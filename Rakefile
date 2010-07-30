@@ -1,5 +1,5 @@
-require 'rake'
-require 'rake/testtask'
+require "rake"
+require "rake/testtask"
 require "rake/rdoctask"
 require "jeweler"
 
@@ -38,7 +38,7 @@ begin
     gemspec.add_dependency("actionpack", ">=2.3.4")
     gemspec.add_development_dependency("activesupport", ">=2.3.4")
     
-    gemspec.files.include("generators/**/*", "lib/**/*")
+    gemspec.files.include("lib/**/*.rb")
     gemspec.files.include("test/**/*.rb")
   end
   Jeweler::GemcutterTasks.new

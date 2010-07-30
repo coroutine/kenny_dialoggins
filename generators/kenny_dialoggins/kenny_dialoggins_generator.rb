@@ -5,8 +5,8 @@ class KennyDialogginsGenerator < Rails::Generator::Base
   #
   def manifest
     record do |m|
-      m.file "kenny_dialoggins.js", "public/javascripts/kenny_dialoggins.js"
       m.file "kenny_dialoggins.css", "public/stylesheets/kenny_dialoggins.css"
+      m.file "kenny_dialoggins.js",  "public/javascripts/kenny_dialoggins.js"
     end
   end
 end
