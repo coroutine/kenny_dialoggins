@@ -56,6 +56,20 @@ Kenny Dialoggins
 
 
 
+== IE6 Support
+
+I'm not what you'd call a huge fan of IE6, so I don't provide a blocking 
+iframe for my dialogs by default.  But I can.  You just need to ask nicely.
+
+At the top of the generated javascript file, just change the obviously-named property 
+hanging	right off of the Kenny D namespace.  Like this.
+
+	KennyDialoggins.SUPPORT_IE6_BULLSHIT = true;
+
+That's it. I do the rest.
+
+
+
 == Helpful Links
 
 * <b>Repository:</b> http://github.com/coroutine/kenny_dialoggins
@@ -76,7 +90,22 @@ in the mix.
 
 
 
-== Installation & Generators
+== Installation & Generators (Rails 3)
+
+Install me from RubyGems.org by adding a gem dependency to your Gemfile.  Bundler does 
+the rest.
+
+	gem "kenny_dialoggins"
+	
+	$ bundle install
+
+Then generate the required javascript file and the starter stylesheet.
+
+	$ rails g kenny_dialoggins
+	
+
+
+== Installation & Generators (Rails 2)
 
 Install me from RubyGems.org and add a gem dependency in the appropriate file.
 
@@ -86,23 +115,24 @@ Or install me as a plugin.
 
 	$ script/plugin install git://github.com/coroutine/kenny_dialoggins.git
 
-Either way, then generate the stylesheet and javascript files I need.
+Either way, then generate the required javascript file and the starter stylesheet.
 
 	$ script/generate kenny_dialoggins
 	
 
 
-== IE6 Support
+== Gemroll
 
-I'm not what you'd call a huge fan of IE6, so I don't provide a blocking 
-iframe for my dialogs by default.  But I can.  You just need to ask nicely.
+If you think I'm awesome, you should check out my soulmate 
+{Michael Hintbuble}[http://github.com/coroutine/michael_hintbuble].
 
-At the top of the generated javascript file, just change the obviously-named property 
-hanging	right off of the Kenny D namespace.  Like this.
+Other gems by Coroutine include:
 
-	KennyDialoggins.SUPPORT_IE6_BULLSHIT = true;
-
-That's it. I do the rest.
+* {acts_as_current}[http://github.com/coroutine/acts_as_current]
+* {acts_as_label}[http://github.com/coroutine/acts_as_label]
+* {acts_as_list_with_sti_support}[http://github.com/coroutine/acts_as_list_with_sti_support]
+* {delayed_form_observer}[http://github.com/coroutine/delayed_form_observer]
+* {tiny_navigation}[http://github.com/coroutine/tiny_navigation]
 
 
 
