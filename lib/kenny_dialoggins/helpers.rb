@@ -6,6 +6,7 @@ module Coroutine
       # to this method is the dialog's <tt>id</tt>.  The id is required and should be unique.
       # Further options may be provided; those that are specific to the dialog are:
       #
+      # * <tt>:class</tt> - a css class name that will be appended to the outermost div to facilitate multiple styles
       # * <tt>:before_show</tt> - a Javascript function that will be invoked before the dialog is shown
       # * <tt>:after_show</tt> - a Javascript function that will be invoked after the dialog has become visible
       # * <tt>:before_hide</tt> - a Javascript function that will be invoked before the dialog is hidden
@@ -41,7 +42,7 @@ module Coroutine
       # This case is similar to the previous case, except that an alert containing the string, "bar!" will
       # appear before the dialog is shown
       def render_dialog(id, options={})
-        dialog_options  = [:before_show, :after_show, :before_hide, :after_hide].inject({}) do |result, key|
+        dialog_options  = [:class, :before_show, :after_show, :before_hide, :after_hide].inject({}) do |result, key|
           result[key]   = options.delete(key) if options[key]
           result
         end
