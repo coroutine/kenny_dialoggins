@@ -2,6 +2,7 @@
 .kenny_dialoggins_dialog {                   
     position:               absolute;
     padding:                1em;
+    width:                  500px;
     z-index:                2;
     box-shadow:             4px 4px 16px rgba(0,0,0,0.5);
     -moz-box-shadow:        4px 4px 16px rgba(0,0,0,0.5);
@@ -22,13 +23,16 @@
 
 /* error dialog */
 .error_dialog {
+    width: 300px;
     background: #d00;
     color: #fff;
+    border: 1px solid #d00;
 }
 
 
 /* help dialog */
 .help_dialog {
+    width: 600px;
     background: #ccc;
     color: #333;
     border: 1px solid #666;

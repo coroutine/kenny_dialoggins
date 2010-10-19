@@ -273,23 +273,30 @@ Object.extend(KennyDialoggins.Dialog.prototype, {
     
     
     /**
+     * This function sets the position of the dialog element.
+     */
+    setPosition: function() {
+        var layout               = new Element.Layout(this._element);
+        this._element.style.top  = Math.ceil(((document.viewport.getHeight()/2) + (document.viewport.getScrollOffsets().top)  - (layout.get("padding-box-height")/2)) * 2/3) + "px";
+        this._element.style.left = Math.ceil((document.viewport.getWidth()/2)  + (document.viewport.getScrollOffsets().left) - (layout.get("padding-box-width")/2))  + "px";
+    },
+    
+    
+    /**
      * This function displays the dialog. It uses a scriptaculous effect to fade in,
      * centers the dialog in the viewport (and adjusts the blocking iframe, if in use), 
      * and connects a click observer to hide the dialog whenever mouse focus leaves 
      * the dialog.
      */
     show: function() {
-        KennyDialoggins.Dialog._POSITION_FN_MAP.each(function(pair) {
-            var method = pair.last();
-            this._element.style[pair.first()] = 
-                (document.viewport[method]() / 2 + document.viewport.getScrollOffsets()[pair.first()] - this._element[method]() / 2) + "px";
-        }.bind(this));
+        this.setPosition();
         
         if (this._frame) {
+            var layout                  = new Element.Layout(this._element);
             this._frame.style.top       = this._element.style.top;
             this._frame.style.left      = this._element.style.left;
-            this._frame.style.width     = this._element.getWidth() + "px";
-            this._frame.style.height    = this._element.getHeight() + "px";
+            this._frame.style.width     = layout.get("padding-box-width") + "px";
+            this._frame.style.height    = layout.get("padding-box-height") + "px";
             
             new Effect.Appear(this._frame, {
                 duration: 0.2
