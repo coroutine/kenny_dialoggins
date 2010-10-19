@@ -8,7 +8,7 @@
  * Brought to you by the good folks at Coroutine.  Hire us!
  * http://coroutine.com
  */
-var KennyDialoggins = {}
+var KennyDialoggins = {};
 
 
 /**
@@ -31,7 +31,7 @@ KennyDialoggins.Dialog = function(content, options) {
     this._element       = null;
     this._frame         = null;
     this._hideListener  = this._generateHideListener();
-    this._is_showing    = false;
+    this._isShowing     = false;
     
     this._class         = options["class"]      || ""
     this._beforeShow    = options["beforeShow"] || Prototype.emptyFunction
@@ -41,13 +41,11 @@ KennyDialoggins.Dialog = function(content, options) {
     
     this._makeDialog();
     this.setContent(content);
-    document.body.appendChild(this._element);
     
     if (KennyDialoggins.SUPPORT_IE6_BULLSHIT) {
         this._makeFrame();
-        document.body.appendChild(this._frame);
     }
-}
+};
 
 
 
@@ -73,21 +71,18 @@ KennyDialoggins.Dialog._POSITION_FN_MAP = $H({
 
 
 /**
- * This method shows the dialog with the corresponding id.
+ * This method destroys the dialog with the corresponding id.
  *
  * @param {String} id   The id value of the dialog element (also the key 
  *                      in the instances hash.)
- *
- * @return {Object} an instance of KennyDialoggins.Dialog
- *
  */
-KennyDialoggins.Dialog.show = function(id) {
+KennyDialoggins.Dialog.destroy = function(id) {
     var dialog = this.instances[id];
-    if(dialog) {
-        dialog.show();
+    if (dialog) {
+        dialog.finalize();
     }
-    return dialog;
-}
+    this.instances[id] = null;
+};
 
 
 /**
@@ -101,11 +96,11 @@ KennyDialoggins.Dialog.show = function(id) {
  */
 KennyDialoggins.Dialog.hide = function(id) {
     var dialog = this.instances[id];
-    if(dialog) {
+    if (dialog) {
         dialog.hide();
     }
     return dialog;
-}
+};
 
 
 /**
@@ -119,13 +114,31 @@ KennyDialoggins.Dialog.hide = function(id) {
  *                      id is showing.
  *
  */
-KennyDialoggins.Dialog.is_showing = function(id) {
+KennyDialoggins.Dialog.isShowing = function(id) {
     var dialog = this.instances[id];
     if (!dialog) {
         throw "No dialog cound be found for the supplied id.";
     }
-    return dialog.is_showing();
-}
+    return dialog.isShowing();
+};
+
+
+/**
+ * This method shows the dialog with the corresponding id.
+ *
+ * @param {String} id   The id value of the dialog element (also the key 
+ *                      in the instances hash.)
+ *
+ * @return {Object} an instance of KennyDialoggins.Dialog
+ *
+ */
+KennyDialoggins.Dialog.show = function(id) {
+    var dialog = this.instances[id];
+    if (dialog) {
+        dialog.show();
+    }
+    return dialog;
+};
 
 
 
@@ -134,6 +147,33 @@ KennyDialoggins.Dialog.is_showing = function(id) {
 // ----------------------------------------------------------------------------
 
 Object.extend(KennyDialoggins.Dialog.prototype, {
+
+
+    /**
+     * This function creates the function that handles click events when the dialog is 
+     * shown.  The handler ignores clicks targeted from within the dialog; any click 
+     * targeted outside the dialog causes the dialog to hide itself and cancel the 
+     * observer.
+     */
+    _generateHideListener: function() {
+        return function(evt) {
+            var origin = evt.findElement(".kenny_dialoggins_dialog");
+            if (this._element !== origin) {
+                this.hide();
+            }
+        }.bind(this);
+    },
+
+
+    /**
+     * This function indicates whether or not the dialog is currently 
+     * being shown.
+     *
+     * @return {Boolean}    Whether or not the dialog is being shown.
+     */
+    _isShowing: function() {
+        return this._isShowing;
+    },
     
     /**
      * This function constructs the dialog element and hides it by default.
@@ -152,6 +192,7 @@ Object.extend(KennyDialoggins.Dialog.prototype, {
                 this._element.addClassName(this._class);
             }
             this._element.hide();
+            document.body.appendChild(this._element);
         }
     },
     
@@ -174,23 +215,50 @@ Object.extend(KennyDialoggins.Dialog.prototype, {
             }
             this._frame.setAttribute("src", "about:blank");
             this._frame.hide();
+            document.body.appendChild(this._frame);
         }
     },
-    
-    
+
+
     /**
-     * This function creates the function that handles click events when the dialog is 
-     * shown.  The handler ignores clicks targeted from within the dialog; any click 
-     * targeted outside the dialog causes the dialog to hide itself and cancel the 
-     * observer.
+     * This function allows the dialog object to be destroyed without
+     * creating memory leaks.
      */
-    _generateHideListener: function() {
-        return function(evt) {
-            var origin = evt.findElement(".kenny_dialoggins_dialog");
-            if (this._element !== origin) {
-                this.hide();
-            }
-        }.bind(this);
+    finalize: function() {
+        this.hide();
+
+        this._element.remove();
+        this._element = null;
+
+        if (this._frame) {
+            this._frame.remove();
+            this._frame = null;
+        }
+
+        this._hideListener = null;
+    },
+
+
+    /**
+     * This function hides the dialog. It uses a scriptaculous effect to fade out 
+     * and disconnects the click observer to prevent memory leaks.
+     */
+    hide: function() {
+        new Effect.Fade(this._element, {
+            duration: 0.2,
+            beforeStart:    this._beforeHide,
+            afterFinish:    function() {
+                this._isShowing = false;
+                this._afterHide();
+                document.stopObserving("click", this._hideListener);
+            }.bind(this)
+        });
+
+        if (this._frame) {
+            new Effect.Fade(this._frame, {
+                duration: 0.2
+            });
+        }
     },
     
     
@@ -232,44 +300,10 @@ Object.extend(KennyDialoggins.Dialog.prototype, {
             duration:       0.2,
             beforeStart:    this._beforeShow,
             afterFinish:    function() {
-                this._is_showing = true;
+                this._isShowing = true;
                 this._afterShow();
                 document.observe("click", this._hideListener);
             }.bind(this)
         });
-    },
-    
-    
-    /**
-     * This function hides the dialog. It uses a scriptaculous effect to fade out 
-     * and disconnects the click observer to prevent memory leaks.
-     */
-    hide: function() {
-        new Effect.Fade(this._element, {
-            duration: 0.2,
-            beforeStart:    this._beforeHide,
-            afterFinish:    function() {
-                this._is_showing = false;
-                this._afterHide();
-                document.stopObserving("click", this._hideListener);
-            }.bind(this)
-        });
-        
-        if (this._frame) {
-            new Effect.Fade(this._frame, {
-                duration: 0.2
-            });
-        }
-    },
-    
-    
-    /**
-     * This function indicates whether or not the dialog is currently 
-     * being shown.
-     *
-     * @return {Boolean}    Whether or not the dialog is being shown.
-     */
-    is_showing: function() {
-        return this._is_showing;
     }
 });

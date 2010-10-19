@@ -32,16 +32,27 @@ What's that, you want more details?  You got it, buddy.
 <tt>render_dialog</tt> always needs a unique id for its first argument.  After that, it will
 take the same options as <tt>ActionController::Base#render</tt>.  It'll also take a few more, namely:
 
+* <tt>:class</tt> - a css class name that will be appended to the outermost div to facilitate multiple styles
 * <tt>:before_show</tt> - a Javascript function that will be invoked before the dialog is shown
 * <tt>:after_show</tt> - a Javascript function that will be invoked after the dialog has become visible
 * <tt>:before_hide</tt> - a Javascript function that will be invoked before the dialog is hidden
 * <tt>:after_hide</tt> - a Javascript function that will be invoked after the dialog has been hidden
+* <tt>&block</tt> - HTML markup that will be automatically converted to render's inline option
 
 Here's an example using the <tt>before_show</tt> option:
 
     # Create the dialog with a callback
     <%= render_dialog :footloose_dialog, :partial => "footloose", :before_show => "function() { alert('Everybody get footloose!'); }" %>
-    
+
+To invoke the dialog, use unobtrusive javascript to trap a click event and show the dialog.
+
+    // invoke the dialog
+    $("footloose_dialog_link").observe("click", function(evt) {
+      KennyDialoggins.Dialog.show("footloose_dialog");
+    });
+
+Or, if you're using javascript helper functions, you can use the show/hide helpers to accomplish the same thing.
+
     # Invoke the dialog
     <%= link_to_function "Dance party!", show_dialog(:footloose_dialog) %>
 
@@ -53,6 +64,21 @@ Your pal,
 
 Kenny Dialoggins
 
+
+
+
+== Multiple Dialog Styles
+
+If you need to style more than one kind of dialog, just use the <tt>:class</tt> option to append a css class name 
+on the outermost div.  That'll give you a logical anchor around which you can restyle all the interior classes.
+
+Please note that the blocking iframe is automatically given an additional class name equal to the outermost div's class 
+name plus the string "_frame".  
+
+By default, the top-level class assignments are "kenny_dialoggins_dialog" and "kenny_dialoggins_dialog_frame". 
+
+If you set the <tt>:class</tt> option to <tt>:error_dialog</tt>, the top-level class assignments will be 
+"kenny_dialoggins_dialog error_dialog" and "kenny_dialoggins_dialog_frame error_dialog_frame".
 
 
 
