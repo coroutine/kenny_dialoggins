@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{kenny_dialoggins}
-  s.version = "1.0.4"
+  s.version = "1.0.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Coroutine", "Tim Lowrimore", "John Dugan"]
-  s.date = %q{2010-10-19}
+  s.date = %q{2010-11-11}
   s.description = %q{Kenny Dialoggins allows you to include scriptaculous dialogs in Rails applications using the same syntax employed for rendering partials.}
   s.email = %q{gems@coroutine.com}
   s.extra_rdoc_files = [
