@@ -46,7 +46,7 @@ class KennyDialogginsHelpersTest < ActionView::TestCase
     text      = "Who wants to play volleyball on a court with a four-foot net?"
     expected  = "<script type=\"text/javascript\">\n" \
                 "//<![CDATA[\n" \
-                "KennyDialoggins.Dialog.instances['danger_zone'] = new KennyDialoggins.Dialog('" + text + "', {});\n" \
+                "Event.observe(window, 'load', function() { KennyDialoggins.Dialog.instances['danger_zone'] = new KennyDialoggins.Dialog('" + text + "', {'id':'danger_zone'}) });\n" \
                 "//]]>\n" \
                 "</script>"
     actual    = @view.render_dialog(:danger_zone, :text => text)
@@ -54,6 +54,19 @@ class KennyDialogginsHelpersTest < ActionView::TestCase
     assert_equal expected, actual
   end
   
+  def test_render_dialog_with_id
+    text      = "I secretly likes me some Bone Thugs. Woot! --Kenny"
+    id        = "bone_thugs_dialog"
+    expected  = "<script type=\"text/javascript\">\n" \
+                "//<![CDATA[\n" \
+                "Event.observe(window, 'load', function() { KennyDialoggins.Dialog.instances['thuggin'] = new KennyDialoggins.Dialog('" + text + "', {'id':'" + id + "'}) });\n" \
+                "//]]>\n" \
+                "</script>"
+                
+    actual    = @view.render_dialog(:thuggin, :text => text, :id => id)
+                
+    assert_equal expected, actual
+  end
   
   # verify show dialog returns proper javascript command.
   def test_show_dialog
@@ -69,20 +82,6 @@ class KennyDialogginsHelpersTest < ActionView::TestCase
     expected  = "KennyDialoggins.Dialog.hide('danger_zone')"
     actual    = @view.hide_dialog(:danger_zone)
     
-    assert_equal expected, actual
-  end
-  
-  
-  # verify private function converts ruby hash to javascript hash properly.
-  def test_dialog_options_to_js
-    options = { 
-                :before_show => "function{ alert('hello, world!'); }", 
-                :after_show => "function{ alert('goodbye, world!'); }"
-              }
-    
-    expected  = "{beforeShow:#{options[:before_show]},afterShow:#{options[:after_show]}}"
-    actual    = @view.dialog_options_to_js_proxy(options)
-
     assert_equal expected, actual
   end
   

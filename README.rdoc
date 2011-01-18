@@ -32,6 +32,7 @@ What's that, you want more details?  You got it, buddy.
 <tt>render_dialog</tt> always needs a unique id for its first argument.  After that, it will
 take the same options as <tt>ActionController::Base#render</tt>.  It'll also take a few more, namely:
 
+* <tt>:id</tt> - an element id for the generated dialog.  If not provided, the value provided as the first argument to render_dialog will be used.
 * <tt>:class</tt> - a css class name that will be appended to the outermost div to facilitate multiple styles
 * <tt>:before_show</tt> - a Javascript function that will be invoked before the dialog is shown
 * <tt>:after_show</tt> - a Javascript function that will be invoked after the dialog has become visible

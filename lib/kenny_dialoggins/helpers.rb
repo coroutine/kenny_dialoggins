@@ -6,6 +6,7 @@ module Coroutine
       # to this method is the dialog's <tt>id</tt>.  The id is required and should be unique.
       # Further options may be provided; those that are specific to the dialog are:
       #
+      # * <tt>:id</tt> - an element id for the generated dialog.  If not provided, the value provided as the first argument to render_dialog will be used.
       # * <tt>:class</tt> - a css class name that will be appended to the outermost div to facilitate multiple styles
       # * <tt>:before_show</tt> - a Javascript function that will be invoked before the dialog is shown
       # * <tt>:after_show</tt> - a Javascript function that will be invoked after the dialog has become visible
@@ -22,7 +23,7 @@ module Coroutine
       # #
       # # <script type="text/javascript">
       # #   //<![CDATA[
-      # #     KennyDialoggins.Dialog.instances['foo_dialog'] = new KennyDialoggins.Dialog('Hello, Foo!', {});
+      # #     KennyDialoggins.Dialog.instances['foo_dialog'] = new KennyDialoggins.Dialog('Hello, Foo!', {'id':'foo_dialog'});
       # #   //]]>
       # # </script>
       # <%= render_dialog :foo_dialog, :partial => "foo" %>
@@ -35,7 +36,7 @@ module Coroutine
       # # Generates:
       # # <script type="text/javascript">
       # #   //<![CDATA[
-      # #     KennyDialoggins.Dialog.instances['foo_dialog'] = new KennyDialoggins.Dialog('Hello, Foo!', {beforeShow:function() { alert('bar!') }});
+      # #     KennyDialoggins.Dialog.instances['foo_dialog'] = new KennyDialoggins.Dialog('Hello, Foo!', {'id':'foo_dialog', 'beforeShow':function() { alert('bar!') }});
       # #   //]]>
       # # </script>
       # <%= render_dialog :foo_dialog, :partial => "foo", :before_show => "function() { alert('bar!') }" %>
@@ -46,7 +47,12 @@ module Coroutine
       def render_dialog(id, options = {}, &block)
         options[:inline]    = capture(&block) if block_given?
         render_options      = extract_dialog_render_options(options)
-        javascript_options  = dialog_options_to_js(extract_dialog_javascript_options(options))
+        javascript_options  = extract_dialog_javascript_options(options)
+        
+        # In the event an id is not provided in the options, we'll use the
+        # dialog id.
+        javascript_options[:id] ||= id
+        javascript_options  = dialog_options_to_js(javascript_options)
         
         content = escape_javascript(render(render_options))
         
@@ -82,7 +88,7 @@ module Coroutine
       # javascript library.
       #
       def dialog_javascript_option_keys
-        [:class, :before_show, :after_show, :before_hide, :after_hide]
+        [:class, :id, :before_show, :after_show, :before_hide, :after_hide]
       end
       
       
